@@ -126,10 +126,10 @@ class Teacher implements TeacherInterface {
 }
 
 // createEmployee: accept number | string, handle string salaries like "$500"
-function createEmployee(salary: number | string): Director | Teacher {
-
-  // @ts-ignore: keep literal for autograder
-    if ((salary as any) < 500) {
+function createEmployee(salary: number | string ): Director | Teacher {
+  // produce a numeric salary to compare, fallback to 0 when parse fails
+    const numericSalary = typeof salary === "number" ? salary : parseInt(salary.replace(/\D/g, '')) || 0;
+    if (numericSalary < 500) {
         return new Teacher();
     }
 
@@ -139,7 +139,7 @@ function createEmployee(salary: number | string): Director | Teacher {
 // Instances to display
 const employee200 = createEmployee(200);
 const employee1000 = createEmployee(1000);
-const employee500 = createEmployee("$500");
+
 
 // formatEmployee: narrow with instanceof and call the correct method
 function formatEmployee(employee: Director | Teacher): string {
@@ -150,6 +150,21 @@ function formatEmployee(employee: Director | Teacher): string {
   }
   return "";
 }
+
+function isDirector(employee: Director | Teacher): employee is Director {
+  return employee instanceof Director;
+}
+
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+
+console.log(executeWork(createEmployee(200)));   
+console.log(executeWork(createEmployee(1000)));
 
 // Add some basic styles
 const style = document.createElement("style");
@@ -228,7 +243,7 @@ Status: ${student.workOnHomework()}
     <pre>
 ${formatEmployee(employee200)}
 ${formatEmployee(employee1000)}
-${formatEmployee(employee500)}
+
     </pre>
   </div>
 `;
