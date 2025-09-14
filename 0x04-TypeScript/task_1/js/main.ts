@@ -31,6 +31,14 @@ const director1: Director = {
     numberOfReports: 17
 }
 
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
+}
+function printTeacher(firstName: string, lastName: string): string {
+    return `${firstName.charAt(0)}. ${lastName}`;
+
+}
+
 // Add some basic styles
 const style = document.createElement("style");
 style.textContent = `
@@ -77,6 +85,7 @@ document.head.appendChild(style);
 
 // Inject object data into the page
 document.body.innerHTML = `
+  <div><h1>${printTeacher(teacher1.firstName, teacher1.lastName)}</h1></div>
   <div class="card">
     <h1>Teacher Info</h1>
     <pre>${JSON.stringify(teacher1, null, 2)}</pre>
