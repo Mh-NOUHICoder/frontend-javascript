@@ -9,12 +9,25 @@ interface Teacher {
     [key: string]: any;
 }
 
+interface Directors extends Teacher {
+    numberOfReports: number;
+}
+
+
 const teacher1: Teacher = {
     firstName: "Mohamed",  
     lastName: "Majid",
     fullTimeEmployee: true,
     location: "Rabat",
     contract: false
+}
+
+const director1: Directors = {
+    firstName: 'Said',
+    lastName: 'Chraibi',
+    fullTimeEmployee: true,
+    location: 'Casablanca',
+    numberOfReports: 17
 }
 
 // Add some basic styles
@@ -24,9 +37,10 @@ style.textContent = `
     font-family: Arial, sans-serif;
     background: #080808;
     color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display:grid;
+    place-items: center;
+    gap: 20px;
+    padding: 40px;
     min-height: 100vh;
     margin: 0;
   }
@@ -44,6 +58,11 @@ style.textContent = `
     text-align: center;
     color: #007acc;
   }
+
+  .direcotr_title {
+    color: #ff0000b1;
+  }
+    
   pre {
     background: #f9fafb6e;
     color: #fff;
@@ -60,5 +79,9 @@ document.body.innerHTML = `
   <div class="card">
     <h1>Teacher Info</h1>
     <pre>${JSON.stringify(teacher1, null, 2)}</pre>
+  </div>
+  <div class="card">
+    <h1 class="direcotr_title">Director Info</h1>
+    <pre>${JSON.stringify(director1, null, 2)}</pre>
   </div>
 `;
