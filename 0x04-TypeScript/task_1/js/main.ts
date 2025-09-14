@@ -37,8 +37,9 @@ interface printTeacherFunction {
 
 // Using object destructuring
 function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
-    return `${firstName.charAt(0)}. ${lastName}`;
+    return `${firstName}. ${lastName}`;
 }
+
 
 
 // Add some basic styles
@@ -87,7 +88,7 @@ document.head.appendChild(style);
 
 // Inject object data into the page
 document.body.innerHTML = `
-  <div><h1>${printTeacher(teacher1.firstName, teacher1.lastName)}</h1></div>
+  <h1>${printTeacher({ firstName: teacher1.firstName, lastName: teacher1.lastName })}</h1>
   <div class="card">
     <h1>Teacher Info</h1>
     <pre>${JSON.stringify(teacher1, null, 2)}</pre>
