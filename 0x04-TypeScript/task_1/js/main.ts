@@ -23,10 +23,11 @@ const teacher1: Teacher = {
 }
 
 const director1: Directors = {
-    firstName: 'Said',
-    lastName: 'Chraibi',
-    fullTimeEmployee: true,
-    location: 'Casablanca',
+    firstName: teacher1.firstName,
+    lastName: teacher1.lastName,
+    location: teacher1.location,
+    yearsOfExperience: teacher1.yearsOfExperience,
+    fullTimeEmployee: teacher1.fullTimeEmployee,
     numberOfReports: 17
 }
 
