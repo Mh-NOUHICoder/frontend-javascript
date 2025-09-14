@@ -34,10 +34,12 @@ const director1: Director = {
 interface printTeacherFunction {
     (firstName: string, lastName: string): string;
 }
-function printTeacher(firstName: string, lastName: string): string {
-    return `${firstName.charAt(0)}. ${lastName}`;
 
+// Using object destructuring
+function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
+    return `${firstName.charAt(0)}. ${lastName}`;
 }
+
 
 // Add some basic styles
 const style = document.createElement("style");
