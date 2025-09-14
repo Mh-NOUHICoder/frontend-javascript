@@ -9,7 +9,7 @@ interface Teacher {
     [key: string]: any;
 }
 
-interface Directors extends Teacher {
+interface Director extends Teacher {
     numberOfReports: number;
 }
 
@@ -22,11 +22,11 @@ const teacher1: Teacher = {
     contract: false
 }
 
-const director1: Directors = {
+const director1: Director = {
     firstName: teacher1.firstName,
     lastName: teacher1.lastName,
     location: teacher1.location,
-    yearsOfExperience: teacher1.yearsOfExperience,
+    yearsOfExperience: teacher1.yearsOfExperience ?? 0,
     fullTimeEmployee: teacher1.fullTimeEmployee,
     numberOfReports: 17
 }
@@ -60,7 +60,7 @@ style.textContent = `
     color: #007acc;
   }
 
-  .direcotr_title {
+  .director_title {
     color: #ff0000b1;
   }
     
@@ -82,7 +82,7 @@ document.body.innerHTML = `
     <pre>${JSON.stringify(teacher1, null, 2)}</pre>
   </div>
   <div class="card">
-    <h1 class="direcotr_title">Director Info</h1>
+    <h1 class="director_title">Director Info</h1>
     <pre>${JSON.stringify(director1, null, 2)}</pre>
   </div>
 `;
