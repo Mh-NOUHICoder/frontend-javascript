@@ -30,15 +30,53 @@ const director1: Director = {
     fullTimeEmployee: teacher1.fullTimeEmployee,
     numberOfReports: 17
 }
-
+//=====task 3 ======
 interface printTeacherFunction {
     (firstName: string, lastName: string): string;
 }
 
-// Using object destructuring
+
 function printTeacher({ firstName, lastName }: { firstName: string; lastName: string }): string {
     return `${firstName}. ${lastName}`;
 }
+
+            //=====task 4 ======
+// Interface for the constructor arguments
+interface StudentConstructor {
+    firstName: string;
+    lastName: string;
+}
+
+// Interface for the class methods
+interface StudentInterface {
+    workOnHomework(): string;
+    displayName(): string;
+}
+
+// Class implementing the interface
+class StudentClass implements StudentInterface {
+    firstName: string;
+    lastName: string;
+
+    constructor({ firstName, lastName }: StudentConstructor) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    workOnHomework(): string {
+        return "Currently working";
+    }
+
+    displayName(): string {
+        return this.firstName;
+    }
+}
+
+// Example usage
+const student = new StudentClass({ firstName: "Mohamed", lastName: "Majid" });
+console.log(student.displayName());     
+console.log(student.workOnHomework());  
+
 
 
 
