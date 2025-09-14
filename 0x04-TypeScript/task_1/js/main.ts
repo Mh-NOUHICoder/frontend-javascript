@@ -77,6 +77,67 @@ const student = new StudentClass({ firstName: "Mohamed", lastName: "Majid" });
 console.log(student.displayName());     
 console.log(student.workOnHomework());  
 
+        //===== Task 5 ======
+//Create the DirectorInterface interface with the 3 expected methods:
+interface DirectorInterface {
+    workFromHome(): string;
+    getCoffeeBreak(): string;
+    workDirectorTasks(): string;
+}
+
+// Create the TeacherInterface interface with the 3 expected methods:
+interface TeacherInterface {
+    workFromHome(): string;
+    getCoffeeBreak(): string;
+    workTeacherTasks(): string;
+}
+
+//Create a class Director that will implement DirectorInterface
+class DirectorClass implements DirectorInterface {
+    workFromHome(): string {
+        return "Working from home";
+    }
+    getCoffeeBreak(): string {
+        return "Getting a coffee break";
+    }
+    workDirectorTasks(): string {
+        return "Getting to director tasks";
+    }
+}
+
+//Create a class Teacher that will implement TeacherInterface
+class TeacherClass implements TeacherInterface {
+    workFromHome(): string {
+        return "Cannot work from home";
+    }
+    getCoffeeBreak(): string {
+        return "Cannot have a break";
+    }
+    workTeacherTasks(): string {
+        return "Getting to work";
+    }
+}
+
+//Create a function createEmployee with the following requirements:
+function createEmployee(salary: number | string): DirectorClass | TeacherClass {
+    if (typeof salary === "number" && salary < 500) {
+        return new TeacherClass();
+    }
+    return new DirectorClass();
+}
+
+const employee200 = createEmployee(200);
+const employee1000 = createEmployee(1000);
+const employee500 = createEmployee('$500');
+
+function formatEmployee(employee: DirectorClass | TeacherClass): string {
+    if (employee instanceof TeacherClass) {
+        return `Teacher: ${employee.workTeacherTasks()}`;
+    } else if (employee instanceof DirectorClass) {
+        return `Director: ${employee.workDirectorTasks()}`;
+    }
+    return "";
+}
 
 
 
@@ -127,12 +188,31 @@ document.head.appendChild(style);
 // Inject object data into the page
 document.body.innerHTML = `
   <h1>${printTeacher({ firstName: teacher1.firstName, lastName: teacher1.lastName })}</h1>
+
   <div class="card">
     <h1>Teacher Info</h1>
     <pre>${JSON.stringify(teacher1, null, 2)}</pre>
   </div>
+
   <div class="card">
     <h1 class="director_title">Director Info</h1>
     <pre>${JSON.stringify(director1, null, 2)}</pre>
+  </div>
+
+  <div class="card">
+    <h1>Student Info</h1>
+    <pre>
+Name: ${student.displayName()}
+Status: ${student.workOnHomework()}
+    </pre>
+  </div>
+
+  <div class="card">
+    <h1>Employees</h1>
+    <pre>
+${formatEmployee(employee200)}
+${formatEmployee(employee1000)}
+${formatEmployee(employee500)}
+    </pre>
   </div>
 `;
