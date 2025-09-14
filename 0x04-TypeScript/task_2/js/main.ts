@@ -126,10 +126,10 @@ class Teacher implements TeacherInterface {
 }
 
 // createEmployee: accept number | string, handle string salaries like "$500"
-function createEmployee(salary: number | string): Director | Teacher {
-
-  // @ts-ignore: keep literal for autograder
-    if ((salary as any) < 500) {
+function createEmployee(salary: number | string ): Director | Teacher {
+  // produce a numeric salary to compare, fallback to 0 when parse fails
+    const numericSalary = typeof salary === "number" ? salary : parseInt(salary.replace(/\D/g, '')) || 0;
+    if (numericSalary < 500) {
         return new Teacher();
     }
 
