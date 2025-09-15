@@ -11,7 +11,7 @@ namespace Subjects {
         }
 
         getAvailableTeacher(): string {
-            const teacher = this._teacher;
+            const teacher = this.teacher;
             if (teacher && teacher.experienceTeachingJava && teacher.experienceTeachingJava > 0) {
                 return `Available Teacher: ${teacher.firstName}`;
             } else {
