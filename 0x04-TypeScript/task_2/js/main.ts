@@ -160,8 +160,11 @@ export function executeWork(employee: Director | Teacher): string {
   }
 }
 
-console.log(executeWork(createEmployee(200)));   
-console.log(executeWork(createEmployee(1000)));
+type Subjects = 'Math' | 'History';
+
+export function teachClass(todayClass: Subjects): string {
+  return todayClass === 'Math' ? 'Teaching Math' : 'Teaching History';
+}
 
 // Add some basic styles
 const style = document.createElement("style");
