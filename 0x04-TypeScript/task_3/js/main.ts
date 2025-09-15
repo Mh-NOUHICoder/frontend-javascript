@@ -1,14 +1,16 @@
 /// <reference path="./crud.d.ts" />
 /// <reference path="./interface.ts" />
+
 import { RowID, RowElement } from './interface';
-import { insertRow, deleteRow, updateRow } from './crud';
-// Use global functions directly (no import needed)
+import * as CRUD from './crud'; // CHANGE THIS LINE
+
 const row: RowElement = {
   firstName: 'Guillaume',
   lastName: 'Salva'
 };
 
-const newRowID: RowID = insertRow(row);
+// ADD CRUD. PREFIX TO ALL FUNCTION CALLS
+const newRowID: RowID = CRUD.insertRow(row);
 const updatedRow: RowElement = { ...row, age: 23 };
-updateRow(newRowID, updatedRow);
-deleteRow(newRowID);
+CRUD.updateRow(newRowID, updatedRow);
+CRUD.deleteRow(newRowID);
