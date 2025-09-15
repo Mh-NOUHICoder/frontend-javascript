@@ -1,6 +1,7 @@
 /// <reference path="./crud.d.ts" />
 /// <reference path="./interface.ts" />
 import { RowID, RowElement } from './interface';
+import { insertRow, deleteRow, updateRow } from './crud';
 // Use global functions directly (no import needed)
 const row: RowElement = {
   firstName: 'Guillaume',
