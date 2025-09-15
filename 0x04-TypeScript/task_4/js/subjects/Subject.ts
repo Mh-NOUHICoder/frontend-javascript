@@ -4,7 +4,7 @@ namespace Subjects {
     protected teacher: Teacher;  // Private attribute
 
     // Setter method named setTeacher as required
-    setTeacher(teacher: Teacher): void {
+    setTeacher(teacher:Teacher): void {
       this.teacher = teacher;
     }
 
