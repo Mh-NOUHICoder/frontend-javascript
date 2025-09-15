@@ -1,24 +1,13 @@
-// main.ts task_3
-
 /// <reference path="./crud.d.ts" />
-
+/// <reference path="./interface.ts" />
 import { RowID, RowElement } from './interface';
-import * as CRUD from './crud';
-
-// Create a row object
+// Use global functions directly (no import needed)
 const row: RowElement = {
   firstName: 'Guillaume',
   lastName: 'Salva'
 };
 
-// Insert row and get new ID
-const newRowID: RowID = CRUD.insertRow(row);
-
-// Create updated row with age field
+const newRowID: RowID = insertRow(row);
 const updatedRow: RowElement = { ...row, age: 23 };
-
-// Update the row
-CRUD.updateRow(newRowID, updatedRow);
-
-// Delete the row
-CRUD.deleteRow(newRowID);
+updateRow(newRowID, updatedRow);
+deleteRow(newRowID);
